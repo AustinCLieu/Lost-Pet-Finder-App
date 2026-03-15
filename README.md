@@ -17,6 +17,12 @@ Supabase:
 - setting up Row Level Security (RLS) 
 - RLS is a security layer that controls what roles a user can see and modify in a table
 - For Profiles table, users can see all profiles, insert only their own profile, and update only their own profile
+- Put Supabase project URL and anon key into mobile/.en
+- Download supabase.js client and AsyncStorage which saves the user's login session so they stay logged in between app opens 
+- Make supabase.ts in mobile/lib
+- supabase.ts is a file that creates a connection to Supabase project so that I can import supabase and use it to read/write data
+- Without it, I wouldn't be able to reach supabase 
+- Tested in index.tsx by importing supabase connection, running a query to get pet reports table, which should be empty, and returned num of rows which was 0 (correct because empty table)
 
 
 
