@@ -7,3 +7,11 @@ Supabase/postgresql
 
 The only thing you need to handle in your app is that user_id can now be null — so when you display "reported by..." on a card, you check for that:
 const reportedBy = report.user_id ? report.profiles?.display_name : 'Anonymous'
+
+
+Steps done:
+set up mobile frontend using expo
+created supabase tables in supabase dashboard
+created storage bucket for pet photos in supabase dashboard
+
+
