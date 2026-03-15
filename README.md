@@ -10,8 +10,13 @@ const reportedBy = report.user_id ? report.profiles?.display_name : 'Anonymous'
 
 
 Steps done:
-set up mobile frontend using expo
-created supabase tables in supabase dashboard
-created storage bucket for pet photos in supabase dashboard
+Supabase:
+- set up mobile frontend using expo
+- created supabase tables in supabase dashboard
+- created storage bucket for pet photos in supabase dashboard
+- setting up Row Level Security (RLS) 
+- RLS is a security layer that controls what roles a user can see and modify in a table
+- For Profiles table, users can see all profiles, insert only their own profile, and update only their own profile
+
 
 
