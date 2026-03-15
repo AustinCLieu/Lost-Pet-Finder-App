@@ -16,7 +16,4 @@ create policy "Users can update their own profile"
   on public.profiles for update
   using (auth.uid() = id);
 
--- Pet reports: users can delete only their own pet_reports
-create policy "Users can delete their own reports"
-  on public.pet_reports for delete
-  using (auth.uid() = user_id);
+
