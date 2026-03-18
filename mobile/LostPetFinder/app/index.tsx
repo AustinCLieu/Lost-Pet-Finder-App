@@ -1,25 +1,10 @@
-import { View, Text } from 'react-native';
-import { supabase } from '../lib/supabase';
-import { useEffect, useState } from 'react';
+import { View, Button } from 'react-native';
+import { router } from 'expo-router';
 
-export default function TestScreen() {
-  const [result, setResult] = useState('Loading...');
-
-  useEffect(() => {
-    const test = async () => {
-      const { data, error } = await supabase.from('pet_reports').select('*');
-      if (error) {
-        setResult('Error: ' + error.message);
-      } else {
-        setResult('Connected! Rows: ' + data.length);
-      }
-    };
-    test();
-  }, []);
-
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>{result}</Text>
-    </View>
-  );
+export default function Index() {
+    return (
+        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+            <Button title="Test Supabase" onPress={() => router.push('/supabase_connection_test')} />
+        </View>
+    );
 }
