@@ -1,0 +1,114 @@
+
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+.tree { padding: 12px 0; font-size: 13px; line-height: 1.85; font-family: var(--font-mono, monospace); color: var(--color-text-primary); }
+.row { display: flex; align-items: baseline; gap: 8px; padding: 1px 6px; border-radius: 5px; transition: background 0.1s; }
+.row:hover { background: var(--color-background-secondary); }
+.i0{padding-left:0} .i1{padding-left:20px} .i2{padding-left:40px} .i3{padding-left:60px} .i4{padding-left:80px}
+.name { font-weight: 500; white-space: nowrap; color: var(--color-text-primary); }
+.dim { font-weight: 400; color: var(--color-text-secondary); }
+.f-root   { color: #D4537E; }
+.f-mobile { color: #534AB7; }
+.f-supa   { color: #1D9E75; }
+.f-ml     { color: #BA7517; }
+.tag { font-size: 11px; font-family: var(--font-sans); color: var(--color-text-tertiary); font-weight: 400; }
+.pill { font-size: 11px; font-family: var(--font-sans); padding: 1px 7px; border-radius: 4px; white-space: nowrap; }
+.p-mobile { color: #534AB7; background: #EEEDFE; }
+.p-supa   { color: #0F6E56; background: #E1F5EE; }
+.p-ml     { color: #854F0B; background: #FAEEDA; }
+.p-root   { color: #72243E; background: #FBEAF0; }
+.sep { height: 1px; background: var(--color-border-tertiary); margin: 7px 6px; }
+.label { font-size: 10px; font-family: var(--font-sans); color: var(--color-text-tertiary); letter-spacing: 0.07em; text-transform: uppercase; padding: 6px 6px 2px; }
+@media (prefers-color-scheme: dark) {
+  .f-root   { color: #ED93B1; }
+  .f-mobile { color: #AFA9EC; }
+  .f-supa   { color: #5DCAA5; }
+  .f-ml     { color: #EF9F27; }
+  .p-mobile { color: #CECBF6; background: #26215C; }
+  .p-supa   { color: #9FE1CB; background: #04342C; }
+  .p-ml     { color: #FAC775; background: #412402; }
+  .p-root   { color: #F4C0D1; background: #4B1528; }
+}
+</style>
+<div class="tree">
+
+<div class="row i0"><span class="name f-root">lost-pet-app/</span><span class="pill p-root">root — one git repo, three sub-projects</span></div>
+
+<div class="sep"></div>
+<div class="label">mobile — react native + expo + typescript</div>
+
+<div class="row i1"><span class="name f-mobile">mobile/</span><span class="pill p-mobile">your Expo app</span></div>
+<div class="row i2"><span class="name f-mobile">app/</span></div>
+<div class="row i3"><span class="dim">_layout.tsx</span><span class="tag"> root layout + auth gate</span></div>
+<div class="row i3"><span class="name f-mobile">(auth)/</span></div>
+<div class="row i4"><span class="dim">login.tsx</span></div>
+<div class="row i4"><span class="dim">signup.tsx</span></div>
+<div class="row i3"><span class="name f-mobile">(tabs)/</span></div>
+<div class="row i4"><span class="dim">_layout.tsx</span><span class="tag"> tab bar + icons config</span></div>
+<div class="row i4"><span class="dim">index.tsx</span><span class="tag"> home feed</span></div>
+<div class="row i4"><span class="dim">report.tsx</span><span class="tag"> submit a sighting + breed classifier</span></div>
+<div class="row i4"><span class="dim">sightings.tsx</span><span class="tag"> scrollable filterable list</span></div>
+<div class="row i4"><span class="dim">map.tsx</span><span class="tag"> map with pins</span></div>
+<div class="row i3"><span class="name f-mobile">pet/</span></div>
+<div class="row i4"><span class="dim">[id].tsx</span><span class="tag"> full detail page for one report</span></div>
+
+<div class="row i2"><span class="name f-mobile">components/</span></div>
+<div class="row i3"><span class="dim">PetCard.tsx</span><span class="tag"> card used in feed + sightings</span></div>
+<div class="row i3"><span class="dim">PhotoPicker.tsx</span><span class="tag"> camera / photo library button</span></div>
+<div class="row i3"><span class="dim">LocationPicker.tsx</span><span class="tag"> map pin selector</span></div>
+<div class="row i3"><span class="dim">BreedBadge.tsx</span><span class="tag"> shows CNN predicted breed + confidence</span></div>
+<div class="row i3"><span class="dim">Button.tsx</span><span class="tag"> reusable styled button</span></div>
+
+<div class="row i2"><span class="name f-mobile">lib/</span></div>
+<div class="row i3"><span class="dim">supabase.ts</span><span class="tag"> creates Supabase client</span></div>
+<div class="row i3"><span class="dim">auth.ts</span><span class="tag"> signIn, signUp, signOut</span></div>
+<div class="row i3"><span class="dim">pets.ts</span><span class="tag"> fetch / insert / delete reports</span></div>
+<div class="row i3"><span class="dim">storage.ts</span><span class="tag"> upload photos to Supabase Storage</span></div>
+<div class="row i3"><span class="dim">breedClassifier.ts</span><span class="tag"> sends photo to ML service, returns breed</span></div>
+
+<div class="row i2"><span class="name f-mobile">context/</span></div>
+<div class="row i3"><span class="dim">AuthContext.tsx</span><span class="tag"> global logged-in user, shared to all screens</span></div>
+
+<div class="row i2"><span class="name f-mobile">assets/</span></div>
+<div class="row i3"><span class="dim">icon.png</span><span class="tag">  splash.png  placeholder-pet.png</span></div>
+
+<div class="row i2"><span class="dim">.env</span><span class="tag"> Supabase keys + ML service URL — never commit</span></div>
+<div class="row i2"><span class="dim">app.json</span><span class="tag"> Expo config</span></div>
+<div class="row i2"><span class="dim">package.json</span></div>
+
+<div class="sep"></div>
+<div class="label">supabase — database config</div>
+
+<div class="row i1"><span class="name f-supa">supabase/</span><span class="pill p-supa">SQL files — run in dashboard, saved here</span></div>
+<div class="row i2"><span class="name f-supa">migrations/</span></div>
+<div class="row i3"><span class="dim">001_create_profiles.sql</span></div>
+<div class="row i3"><span class="dim">002_create_pet_reports.sql</span></div>
+<div class="row i3"><span class="dim">003_add_breed_column.sql</span></div>
+<div class="row i2"><span class="name f-supa">policies/</span></div>
+<div class="row i3"><span class="dim">pet_reports_rls.sql</span></div>
+<div class="row i3"><span class="dim">storage_rls.sql</span></div>
+
+<div class="sep"></div>
+<div class="label">ml-service — breed classifier</div>
+
+<div class="row i1"><span class="name f-ml">ml-service/</span><span class="pill p-ml">Python + FastAPI</span></div>
+<div class="row i2"><span class="dim">main.py</span><span class="tag"> FastAPI app — POST /classify</span></div>
+<div class="row i2"><span class="dim">model.py</span><span class="tag"> loads CNN weights, runs prediction</span></div>
+<div class="row i2"><span class="dim">preprocess.py</span><span class="tag"> resizes + normalizes image</span></div>
+<div class="row i2"><span class="name f-ml">model/</span></div>
+<div class="row i3"><span class="dim">breed_cnn.h5</span><span class="tag"> trained weights — add to .gitignore</span></div>
+<div class="row i3"><span class="dim">classes.json</span><span class="tag"> ["Labrador", "Poodle", ...]</span></div>
+<div class="row i2"><span class="name f-ml">training/</span><span class="tag"> local only — never deployed</span></div>
+<div class="row i3"><span class="dim">train.py</span><span class="tag"> builds + trains the CNN</span></div>
+<div class="row i3"><span class="dim">evaluate.py</span><span class="tag"> tests model accuracy</span></div>
+<div class="row i3"><span class="dim">dataset/</span><span class="tag"> training images — add to .gitignore</span></div>
+<div class="row i2"><span class="dim">requirements.txt</span><span class="tag"> fastapi, tensorflow, pillow, uvicorn</span></div>
+<div class="row i2"><span class="dim">Dockerfile</span><span class="tag"> packages server for cloud deployment</span></div>
+
+<div class="sep"></div>
+<div class="label">root level</div>
+
+<div class="row i1"><span class="dim">.gitignore</span><span class="tag"> .env, node_modules, dataset/, breed_cnn.h5</span></div>
+<div class="row i1"><span class="dim">README.md</span><span class="tag"> how to run all three parts</span></div>
+
+</div>
