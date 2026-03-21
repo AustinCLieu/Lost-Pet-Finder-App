@@ -27,5 +27,8 @@ Supabase:
 ML Classifier:
 - Using python 3.13, venv
 - Added root gitignore and venv to it
+- Changed to venv 3.12
+- Adding CLAUDE.md file
+
 
 
