@@ -24,5 +24,8 @@ Supabase:
 - Without it, I wouldn't be able to reach supabase 
 - Tested in index.tsx by importing supabase connection, running a query to get pet reports table, which should be empty, and returned num of rows which was 0 (correct because empty table)
 
+ML Classifier:
+- Using python 3.13, venv
+- Added root gitignore and venv to it
 
 
