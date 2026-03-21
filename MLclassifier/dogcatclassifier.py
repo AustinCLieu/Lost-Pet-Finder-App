@@ -1,5 +1,5 @@
 # First we will classify the type of animal, dog or cat
-# Python 3.13
+# Python 3.12
 
 # Loading Libraries
 # Basic
@@ -24,7 +24,7 @@ from sklearn.metrics import classification_report, confusion_matrix, ConfusionMa
 
 # Tensorflow
 import tensorflow as tf
-from tensorflow.keras.models import Sequential
-from tensorflow.keras.preprocessing.image import ImageDataGenerator
-from tensorflow.keras.layers import Dense, MaxPooling2D, Dropout, Flatten, BatchNormalization, Conv2D
-from tensorflow.keras.callbacks import ReduceLROnPlateau, EarlyStopping
+from keras.models import Sequential
+from keras.preprocessing.image import ImageDataGenerator
+from keras.layers import Dense, MaxPooling2D, Dropout, Flatten, BatchNormalization, Conv2D
+from keras.callbacks import ReduceLROnPlateau, EarlyStopping

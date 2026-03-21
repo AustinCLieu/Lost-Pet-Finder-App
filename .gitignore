@@ -1,1 +1,2 @@
-MLclassifier/.venv/
+MLclassifier/venv/
+.vscode/
