@@ -25,7 +25,7 @@ LostPetFinder/
 - public.profiles - id (PK + FK to auth.users), display_name, avatar_url, created_at
 - public.pet_reports - id (PK), user_id (FK to profiles, set null on delete), breed, description, photo_url, location_text, latitude, longitude, created_at
 
-## Mobile App Structure (mobile/LostPetFinder)
+## Mobile App Structure (mobile/)
 - app/(auth)/ — login.tsx, signup.tsx (no tab bar)
 - app/(tabs)/ — index.tsx (feed), report.tsx, sightings.tsx, map.tsx
 - app/pet/[id].tsx — detail page
