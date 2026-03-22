@@ -1,6 +1,6 @@
-import { View, Text } from 'react-native';
-import { supabase } from '../lib/supabase';
 import { useEffect, useState } from 'react';
+import { Text, View } from 'react-native';
+import { supabase } from '../lib/supabase';
 
 // checked if connected to supabase, it is
 export default function TestScreen() {

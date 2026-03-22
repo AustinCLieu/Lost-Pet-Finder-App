@@ -1,11 +1,11 @@
 {
   "expo": {
-    "name": "LostPetFinder",
-    "slug": "LostPetFinder",
+    "name": "mobilefrontend",
+    "slug": "mobilefrontend",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "lostpetfinder",
+    "scheme": "mobilefrontend",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
