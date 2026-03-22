@@ -29,6 +29,8 @@ ML Classifier:
 - Added root gitignore and venv to it
 - Changed to venv 3.12
 - Adding CLAUDE.md file
-
+- Added (auth) expo router group and (tabs) expo router group
+- Added files for auth and in app tabs/features
+- Added [id].tsx in pet/ which makes a dynamic route. Instead of making a separate file for every single pet report (pet/1.tsx, pet/2.tsx, /et/3.tsx, ...) you write one file [id].tsx and expo fills in id with whatever value is in the url
 
 
