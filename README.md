@@ -32,5 +32,9 @@ ML Classifier:
 - Added (auth) expo router group and (tabs) expo router group
 - Added files for auth and in app tabs/features
 - Added [id].tsx in pet/ which makes a dynamic route. Instead of making a separate file for every single pet report (pet/1.tsx, pet/2.tsx, /et/3.tsx, ...) you write one file [id].tsx and expo fills in id with whatever value is in the url
+- Set up basic auth functions in auth.ts but need to change to match the user info better for sql tables in supabase
 
 
+
+Idea from Dad:
+can api to use a model like chatgpt and see a pet report table 
