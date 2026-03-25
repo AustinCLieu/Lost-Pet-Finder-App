@@ -1,5 +1,6 @@
 # First we will classify the type of animal, dog or cat
 # Python 3.12
+# Alan wuz here
 
 # Loading Libraries
 # Basic
