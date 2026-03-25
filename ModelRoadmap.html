@@ -1,0 +1,1678 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lost Pet App — Full Project Roadmap v2</title>
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: #f9f8f4;
+            color: #1a1a18;
+            padding: 32px 16px 64px;
+        }
+
+        h1 {
+            font-size: 22px;
+            font-weight: 500;
+            margin-bottom: 6px;
+            color: #1a1a18;
+        }
+
+        .subtitle {
+            font-size: 14px;
+            color: #73726c;
+            margin-bottom: 6px;
+        }
+
+        .version-note {
+            font-size: 12px;
+            color: #993556;
+            margin-bottom: 28px;
+            font-style: italic;
+        }
+
+        .roadmap {
+            max-width: 780px;
+            margin: 0 auto;
+        }
+
+        .milestone {
+            margin-bottom: 10px;
+            border: 1px solid #e2e0d8;
+            border-radius: 12px;
+            overflow: hidden;
+            background: #fff;
+        }
+
+        .milestone-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 13px 16px;
+            cursor: pointer;
+            user-select: none;
+            transition: background 0.1s;
+        }
+
+        .milestone-header:hover {
+            background: #f5f4ef;
+        }
+
+        .num {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            font-weight: 500;
+            flex-shrink: 0;
+        }
+
+        .m-title {
+            font-size: 14px;
+            font-weight: 500;
+            color: #1a1a18;
+            flex: 1;
+        }
+
+        .m-tag {
+            font-size: 11px;
+            padding: 2px 8px;
+            border-radius: 4px;
+            flex-shrink: 0;
+        }
+
+        .chevron {
+            font-size: 11px;
+            color: #73726c;
+            transition: transform 0.2s;
+        }
+
+        .chevron.open {
+            transform: rotate(90deg);
+        }
+
+        .steps {
+            padding: 0 16px 16px 56px;
+            display: none;
+        }
+
+        .steps.open {
+            display: block;
+        }
+
+        .step {
+            margin-top: 12px;
+        }
+
+        .step-header {
+            display: flex;
+            gap: 8px;
+            align-items: baseline;
+            margin-bottom: 3px;
+        }
+
+        .step-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            flex-shrink: 0;
+            position: relative;
+            top: 4px;
+        }
+
+        .step-title {
+            font-size: 13px;
+            font-weight: 500;
+            color: #1a1a18;
+        }
+
+        .step-why {
+            font-size: 12px;
+            color: #5f5e5a;
+            line-height: 1.6;
+            padding-left: 15px;
+            margin-bottom: 4px;
+        }
+
+        .step-why code {
+            font-family: "SF Mono", "Fira Code", monospace;
+            font-size: 11px;
+            background: #f1efe8;
+            padding: 1px 5px;
+            border-radius: 3px;
+            color: #1a1a18;
+        }
+
+        .substeps {
+            padding-left: 15px;
+            margin-top: 4px;
+        }
+
+        .sub {
+            display: flex;
+            gap: 8px;
+            padding: 3px 0;
+            align-items: baseline;
+        }
+
+        .sub-dot {
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: #b4b2a9;
+            flex-shrink: 0;
+            position: relative;
+            top: 6px;
+        }
+
+        .sub-title {
+            font-size: 12px;
+            font-weight: 500;
+            color: #5f5e5a;
+        }
+
+        .sub-why {
+            font-size: 11px;
+            color: #888780;
+            line-height: 1.5;
+        }
+
+        .sub-why code {
+            font-family: "SF Mono", "Fira Code", monospace;
+            font-size: 11px;
+            background: #f1efe8;
+            padding: 1px 4px;
+            border-radius: 3px;
+            color: #1a1a18;
+        }
+
+        .done-pill {
+            font-size: 11px;
+            padding: 2px 8px;
+            border-radius: 4px;
+            color: #0F6E56;
+            background: #E1F5EE;
+            flex-shrink: 0;
+        }
+
+        .new-pill {
+            font-size: 11px;
+            padding: 2px 8px;
+            border-radius: 4px;
+            color: #993556;
+            background: #FBEAF0;
+            flex-shrink: 0;
+        }
+
+        .c1 .num,
+        .c1 .m-tag {
+            background: #EEEDFE;
+            color: #534AB7;
+        }
+
+        .c1 .step-dot {
+            background: #7F77DD;
+        }
+
+        .c2 .num,
+        .c2 .m-tag {
+            background: #E1F5EE;
+            color: #0F6E56;
+        }
+
+        .c2 .step-dot {
+            background: #1D9E75;
+        }
+
+        .c3 .num,
+        .c3 .m-tag {
+            background: #FAEEDA;
+            color: #854F0B;
+        }
+
+        .c3 .step-dot {
+            background: #BA7517;
+        }
+
+        .c4 .num,
+        .c4 .m-tag {
+            background: #FAECE7;
+            color: #993C1D;
+        }
+
+        .c4 .step-dot {
+            background: #D85A30;
+        }
+
+        .c5 .num,
+        .c5 .m-tag {
+            background: #E6F1FB;
+            color: #185FA5;
+        }
+
+        .c5 .step-dot {
+            background: #378ADD;
+        }
+
+        .c6 .num,
+        .c6 .m-tag {
+            background: #FBEAF0;
+            color: #993556;
+        }
+
+        .c6 .step-dot {
+            background: #D4537E;
+        }
+
+        .c7 .num,
+        .c7 .m-tag {
+            background: #EAF3DE;
+            color: #3B6D11;
+        }
+
+        .c7 .step-dot {
+            background: #639922;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="roadmap">
+        <h1>Lost Pet Finder — Project Roadmap v2</h1>
+        <p class="subtitle">React Native + Expo + TypeScript · Supabase · Python CNN · FastAPI</p>
+        <p class="version-note">Updated — gaps filled in for milestones 3–7. New/changed steps marked with pink "new"
+            badges.</p>
+
+        <!-- M1 -->
+        <div class="milestone c1">
+            <div class="milestone-header" onclick="toggle(this)">
+                <div class="num">1</div>
+                <div class="m-title">Project setup and Expo app</div>
+                <div class="done-pill">done</div>
+                <div class="chevron">▶</div>
+            </div>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-header">
+                        <div class="step-dot"></div>
+                        <div class="step-title">Initialize with Expo + TypeScript</div>
+                    </div>
+                    <div class="step-why">TypeScript is a stricter version of JavaScript that catches errors while you
+                        type, before you even run the app. For example, if Supabase returns a pet report object and you
+                        try to access a field that doesn't exist, TypeScript warns you immediately. It makes your code
+                        more reliable and is the professional standard for React Native projects.</div>
+                </div>
+                <div class="step">
+                    <div class="step-header">
+                        <div class="step-dot"></div>
+                        <div class="step-title">Set up the monorepo folder structure</div>
+                    </div>
+                    <div class="step-why">Your project has three distinct parts — the mobile app, the database config,
+                        and the ML server — that each get deployed differently. Keeping them in one root folder (a
+                        monorepo) means one Git repo, one place to look, and easy cross-referencing.</div>
+                    <div class="substeps">
+                        <div class="sub">
+                            <div class="sub-dot"></div>
+                            <div>
+                                <div class="sub-title">Create <code>lost-pet-app/</code> as your root</div>
+                                <div class="sub-why">This is the single folder you open in VS Code and push to GitHub.
+                                    Everything lives inside it.</div>
+                            </div>
+                        </div>
+                        <div class="sub">
+                            <div class="sub-dot"></div>
+                            <div>
+                                <div class="sub-title">Move your Expo project into <code>mobile/</code></div>
+                                <div class="sub-why">Naming it <code>mobile/</code> (not <code>frontend/</code>) is
+                                    precise — it signals this is a native phone app, not a website.</div>
+                            </div>
+                        </div>
+                        <div class="sub">
+                            <div class="sub-dot"></div>
+                            <div>
+                                <div class="sub-title">Create empty <code>supabase/</code> and <code>ml-service/</code>
+                                    folders with a placeholder <code>.gitkeep</code> file</div>
+                                <div class="sub-why">Git doesn't track empty folders. A blank <code>.gitkeep</code> file
+                                    makes them show up in your repo so the structure is visible from day one.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-header">
+                        <div class="step-dot"></div>
+                        <div class="step-title">Create the root <code>.gitignore</code></div>
+                    </div>
+                    <div class="step-why">This file tells Git what to never commit. Exclude <code>.env</code> files
+                        (contain secret keys), <code>node_modules/</code> (huge, auto-generated), the ML dataset
+                        (gigabytes of images), and the trained model weights file.</div>
+                </div>
+                <div class="step">
+                    <div class="step-header">
+                        <div class="step-dot"></div>
+                        <div class="step-title">Create the root <code>README.md</code></div>
+                    </div>
+                    <div class="step-why">Start it now even if it's mostly empty. Document how to run each part of the
+                        project as you build it. Future you — and anyone else looking at your code — will need this.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- M2 -->
+        <div class="milestone c2">
+            <div class="milestone-header" onclick="toggle(this)">
+                <div class="num">2</div>
+                <div class="m-title">Set up Supabase (dashboard)</div>
+                <div class="done-pill">done</div>
+                <div class="chevron">▶</div>
+            </div>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-header">
+                        <div class="step-dot"></div>
+                        <div class="step-title">Create your tables in the SQL editor</div>
+                    </div>
+                    <div class="step-why">Your database needs a defined shape before your app can store anything. You
+                        write SQL once in the Supabase dashboard to create the tables, then your app uses the JS client
+                        — never raw SQL again.</div>
+                    <div class="substeps">
+                        <div class="sub">
+                            <div class="sub-dot"></div>
+                            <div>
+                                <div class="sub-title">Create <code>profiles</code> table</div>
+                                <div class="sub-why">Supabase creates an <code>auth.users</code> table automatically
+                                    when someone signs up, but it's locked. You create a <code>profiles</code> table to
+                                    store extra info like display name, linked via the same user ID. Use
+                                    <code>on delete cascade</code> so the profile is cleaned up if the user deletes
+                                    their account.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sub">
+                            <div class="sub-dot"></div>
+                            <div>
+                                <div class="sub-title">Create <code>pet_reports</code> table</div>
+                                <div class="sub-why">The core table. Use <code>on delete set null</code> on
+                                    <code>user_id</code> so reports survive even if the submitter deletes their account
+                                    — the sighting is still useful to someone looking for their lost pet.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sub">
+                            <div class="sub-dot"></div>
+                            <div>
+                                <div class="sub-title">Save SQL as files in <code>supabase/migrations/</code></div>
+                                <div class="sub-why">Even though you ran them in the dashboard, saving them as numbered
+                                    SQL files gives you a paper trail if you ever need to rebuild.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-header">
+                        <div class="step-dot"></div>
+                        <div class="step-title">Create a Storage bucket called <code>pet-photos</code></div>
+                    </div>
+                    <div class="step-why">Supabase Storage holds the actual image files. Your database table only stores
+                        the URL pointing to the image — not the image itself. This keeps the database fast and lean.
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-header">
+                        <div class="step-dot"></div>
+                        <div class="step-title">Write RLS policies</div>
+                    </div>
+                    <div class="step-why">Because you enabled automatic RLS, all tables are locked by default. You write
+                        policies to open up exactly what you need.</div>
+                    <div class="substeps">
+                        <div class="sub">
+                            <div class="sub-dot"></div>
+                            <div>
+                                <div class="sub-title">"Anyone can read pet_reports"</div>
+                                <div class="sub-why">The whole point of the app is that anyone can browse sightings —
+                                    even logged-out users.</div>
+                            </div>
+                        </div>
+                        <div class="sub">
+                            <div class="sub-dot"></div>
+                            <div>
+                                <div class="sub-title">"Only logged-in users can insert a report"</div>
+                                <div class="sub-why">Prevents anonymous spam. A user must have an account to submit a
+                                    sighting.</div>
+                            </div>
+                        </div>
+                        <div class="sub">
+                            <div class="sub-dot"></div>
+                            <div>
+                                <div class="sub-title">"Users can only delete their own reports"</div>
+                                <div class="sub-why">The policy checks that <code>auth.uid() = user_id</code> before
+                                    allowing deletion.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-header">
+                        <div class="step-dot"></div>
+                        <div class="step-title">Connect to your Expo app</div>
+                    </div>
+                    <div class="substeps">
+                        <div class="sub">
+                            <div class="sub-dot"></div>
+                            <div>
+                                <div class="sub-title">Copy Project URL and anon key into <code>mobile/.env</code></div>
+                                <div class="sub-why">Use the <code>EXPO_PUBLIC_</code> prefix — Expo only injects
+                                    variables into your app if they start with this.</div>
+                            </div>
+                        </div>
+                        <div class="sub">
+                            <div class="sub-dot"></div>
+                            <div>
+                                <div class="sub-title">Create <code>mobile/lib/supabase.ts</code></div>
+                                <div class="sub-why">Creates the Supabase client once and exports it. Every other file
+                                    imports from here. The <code>AsyncStorage</code> option saves the login token to the
+                                    device so users stay logged in.</div>
+                            </div>
+                        </div>
+                        <div class="sub">
+                            <div class="sub-dot"></div>
+                            <div>
+                                <div class="sub-title">Test with a <code>.select()</code> call</div>
+                                <div class="sub-why">An empty array back with no error means the connection is live.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- M3 -->
+        <div class="milestone c3">
+            <div class="milestone-header" onclick="toggle(this)">
+                <div class="num">3</div>
+                <div class="m-title">Build authentication</div>
+                <div class="m-tag">login + signup + profile trigger</div>
+                <div class="chevron">▶</div>
+            </div>
+            <div class="steps">
+
+                <div class="step">
+                    <div class="step-header">
+                        <div class="step-dot"></div>
+                        <div class="step-title">Create the profile trigger in Supabase <span class="new-pill">new</span>
+                        </div>
+                    </div>
+                    <div class="step-why">Your <code>profiles</code> table exists but nothing auto-creates a row when a
+                        user signs up. Without this, <code>signUp()</code> creates an auth account but the
+                        <code>profiles</code> table stays empty — and your app will break later when it tries to load a
+                        profile that doesn't exist. You need a database trigger that fires automatically every time a
+                        new row is inserted into <code>auth.users</code>. It takes the new user's <code>id</code> and
+                        inserts a matching row into <code>profiles</code>. This happens at the database level in a
+                        single transaction — either both succeed or neither does.
+                    </div>
+                    <div class="substeps">
+                        <div class="sub">
+                            <div class="sub-dot"></div>
+                            <div>
+                                <div class="sub-title">Write the trigger function and trigger in the SQL editor</div>
+                                <div class="sub-why">The function runs with <code>security definer</code> so it has
+                                    permission to react to inserts on the locked <code>auth.users</code> table. The
+                                    trigger fires <code>after insert</code> — meaning the auth user is fully created
+                                    before the profile row is added.</div>
+                            </div>
+                        </div>
+                        <div class="sub">
+                            <div class="sub-dot"></div>
+                            <div>
+                                <div class="sub-title">Save as
+                                    <code>supabase/migrations/004_create_profile_trigger.sql</code>
+                                </div>
+                                <div class="sub-why">Keeps your migration trail complete. Anyone rebuilding the database
+                                    from scratch can run 001 through 004 in order and get the same result.</div>
+                            </div>
+                        </div>
+                        <div class="sub">
+                            <div class="sub-dot"></div>
+                            <div>
+                                <div class="sub-title">Test by creating a user in the Supabase Auth dashboard</div>
+                                <div class="sub-why">Go to Auth → Users → Add User. Then check the <code>profiles</code>
+                                    table — a new row with that user's ID should appear automatically. If it doesn't,
+                                    the trigger has a bug.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-header">
+                        <div class="step-dot"></div>
+                        <div class="step-title">Write Storage RLS policies <span class="new-pill">new</span></div>
+                    </div>
+                    <div class="step-why">Your <code>pet-photos</code> bucket is locked by default just like your
+                        tables. Without RLS policies on Storage, photo uploads will silently fail. You need policies to
+                        allow logged-in users to upload images and allow anyone to view them (so photos show up in the
+                        public feed).</div>
+                    <div class="substeps">
+                        <div class="sub">
+                            <div class="sub-dot"></div>
+                            <div>
+                                <div class="sub-title">"Anyone can read files in pet-photos"</div>
+                                <div class="sub-why">Photos need to be publicly viewable — anyone browsing sightings
+                                    should see the images, even without an account.</div>
+                            </div>
+                        </div>
+                        <div class="sub">
+                            <div class="sub-dot"></div>
+                            <div>
+                                <div class="sub-title">"Logged-in users can upload to pet-photos"</div>
+                                <div class="sub-why">Only authenticated users can add images. This prevents anonymous
+                                    abuse of your storage bucket.</div>
+                            </div>
+                        </div>
+                        <div class="sub">
+                            <div class="sub-dot"></div>
+                            <div>
+                                <div class="sub-title">"Users can only delete their own uploads"</div>
+                                <div class="sub-why">Organize uploads by user ID in the path (e.g.
+                                    <code>user-id/filename.jpg</code>) so the policy can check ownership. Save as
+                                    <code>supabase/policies/storage_rls.sql</code>.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-header">
+                        <div class="step-dot"></div>
+                        <div class="step-title">Create shared TypeScript types <span class="new-pill">new</span></div>
+                    </div>
+                    <div class="step-why">Before writing any auth or data logic, define the TypeScript types that the
+                        rest of your app will use. Create <code>lib/types.ts</code> with types like <code>Profile</code>
+                        (matching your <code>profiles</code> table columns: <code>id</code>, <code>display_name</code>,
+                        <code>avatar_url</code>, <code>created_at</code>) and <code>PetReport</code> (matching
+                        <code>pet_reports</code>: <code>id</code>, <code>user_id</code>, <code>breed</code>,
+                        <code>description</code>, <code>photo_url</code>, <code>location_text</code>,
+                        <code>latitude</code>, <code>longitude</code>, <code>created_at</code>). Every function and
+                        component imports from this one file. If you add a column to the database later, you update the
+                        type here and TypeScript will flag every place in your code that needs updating.
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-header">
+                        <div class="step-dot"></div>
+                        <div class="step-title">Create <code>lib/auth.ts</code></div>
+                    </div>
+                    <div class="step-why">Contains all your auth logic in one place — <code>signUp()</code>,
+                        <code>signIn()</code>, <code>signOut()</code>. Your screens call these functions and don't need
+                        to know the Supabase details. Each function is <code>async</code> because it makes a network
+                        request to Supabase and has to wait for a response. They all follow the same pattern: call a
+                        Supabase auth method, check if an error came back, and either throw that error or return the
+                        user. Throwing means your screens can use <code>try/catch</code> — if it throws, show the error;
+                        if it doesn't, the login succeeded.
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-header">
+                        <div class="step-dot"></div>
+                        <div class="step-title">Build <code>(auth)/login.tsx</code></div>
+                    </div>
+                    <div class="step-why">Collects email and password, calls <code>signIn()</code>, and handles the
+                        result. TypeScript helps here because you can type your form state — <code>email: string</code>,
+                        <code>password: string</code>, <code>loading: boolean</code>, <code>error: string | null</code>.
+                    </div>
+                    <div class="substeps">
+                        <div class="sub">
+                            <div class="sub-dot"></div>
+                            <div>
+                                <div class="sub-title">Add email + password text inputs</div>
+                                <div class="sub-why">Use <code>secureTextEntry</code> on the password field so it shows
+                                    dots instead of characters. Set <code>autoCapitalize="none"</code> on email so the
+                                    keyboard doesn't capitalize the first letter.</div>
+                            </div>
+                        </div>
+                        <div class="sub">
+                            <div class="sub-dot"></div>
+                            <div>
+                                <div class="sub-title">Show a loading spinner while the request is in flight</div>
+                                <div class="sub-why">Disable the button while <code>loading === true</code> to prevent
+                                    double-submits. Use <code>ActivityIndicator</code> from React Native.</div>
+                            </div>
+                        </div>
+                        <div class="sub">
+                            <div class="sub-dot"></div>
+                            <div>
+                                <div class="sub-title">Show an error message if credentials are wrong</div>
+                                <div class="sub-why">Supabase returns an error object with a message. Display it below
+                                    the form in red text. Clear it when the user starts typing again.</div>
+                            </div>
+                        </div>
+                        <div class="sub">
+                            <div class="sub-dot"></div>
+                            <div>
+                                <div class="sub-title">Add a "Don't have an account? Sign up" link <span
+                                        class="new-pill">new</span></div>
+                                <div class="sub-why">Users need a way to navigate between login and signup. Use Expo
+                                    Router's <code>Link</code> component or <code>router.push('/(auth)/signup')</code>.
+                                    Without this, new users are stuck on the login screen with no way to create an
+                                    account.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-header">
+                        <div class="step-dot"></div>
+                        <div class="step-title">Build <code>(auth)/signup.tsx</code></div>
+                    </div>
+                    <div class="step-why">Same layout as login but with an extra field and a different function call.
+                        You can disable email confirmation in the Supabase dashboard under Auth → Settings for easier
+                        development — otherwise new users have to check their email before they can log in, which slows
+                        down testing.</div>
+                    <div class="substeps">
+                        <div class="sub">
+                            <div class="sub-dot"></div>
+                            <div>
+                                <div class="sub-title">Add a display name field above email and password <span
+                                        class="new-pill">new</span></div>
+                                <div class="sub-why">Your <code>profiles</code> table has a <code>display_name</code>
+                                    column. If you don't collect it during signup, it stays <code>null</code> and pet
+                                    report cards will show no submitter name. Collecting it now means the profile is
+                                    complete from the start.</div>
+                            </div>
+                        </div>
+                        <div class="sub">
+                            <div class="sub-dot"></div>
+                            <div>
+                                <div class="sub-title">After <code>signUp()</code> succeeds, update the profile with the
+                                    display name <span class="new-pill">new</span></div>
+                                <div class="sub-why">The trigger creates the profile row with only the <code>id</code>.
+                                    Immediately after signup, run
+                                    <code>supabase.from('profiles').update({ display_name }).eq('id', user.id)</code> to
+                                    fill in the name. This is a second network call — wrap it in its own
+                                    <code>try/catch</code> so a name-save failure doesn't block the user from entering
+                                    the app.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sub">
+                            <div class="sub-dot"></div>
+                            <div>
+                                <div class="sub-title">Add an "Already have an account? Log in" link <span
+                                        class="new-pill">new</span></div>
+                                <div class="sub-why">Same navigation pattern as the login screen — users need to be able
+                                    to go back and forth between the two auth screens.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-header">
+                        <div class="step-dot"></div>
+                        <div class="step-title">Create <code>context/AuthContext.tsx</code></div>
+                    </div>
+                    <div class="step-why">React Context shares data across your whole app without passing it through
+                        every component manually. Your AuthContext listens to Supabase's auth state changes using
+                        <code>supabase.auth.onAuthStateChange()</code> and stores the current user. Every screen can
+                        then check whether a user is logged in by reading from the context, without each screen needing
+                        to call Supabase directly. TypeScript lets you define the shape: <code>user: User | null</code>,
+                        <code>loading: boolean</code>.
+                    </div>
+                    <div class="substeps">
+                        <div class="sub">
+                            <div class="sub-dot"></div>
+                            <div>
+                                <div class="sub-title">Include a <code>loading</code> state <span
+                                        class="new-pill">new</span></div>
+                                <div class="sub-why">When the app first opens, it takes a moment to check if there's a
+                                    saved session. During that time, <code>user</code> is <code>null</code> — but that
+                                    doesn't mean the user is logged out, it means you're still checking. Without a
+                                    <code>loading</code> flag, the auth gate will flash the login screen for a split
+                                    second before redirecting to tabs. Set <code>loading = true</code> initially, and
+                                    switch to <code>false</code> once <code>onAuthStateChange</code> fires.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sub">
+                            <div class="sub-dot"></div>
+                            <div>
+                                <div class="sub-title">Fetch the user's profile alongside auth state <span
+                                        class="new-pill">new</span></div>
+                                <div class="sub-why">When <code>onAuthStateChange</code> fires with a valid session,
+                                    also fetch the user's <code>profiles</code> row and store it in context. This way
+                                    every screen has access to <code>display_name</code> and <code>avatar_url</code>
+                                    without making separate queries. Add a <code>profile: Profile | null</code> field to
+                                    the context type.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-header">
+                        <div class="step-dot"></div>
+                        <div class="step-title">Add auth gate to <code>app/_layout.tsx</code></div>
+                    </div>
+                    <div class="step-why">The root layout checks: is <code>loading</code> still true? If yes, show a
+                        splash screen or spinner. Is <code>user</code> null? Go to <code>(auth)/login</code>. Is
+                        <code>user</code> present? Go to <code>(tabs)</code>. This one piece of logic protects every tab
+                        screen automatically. No individual screen needs to check for authentication — it's all handled
+                        here.
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-header">
+                        <div class="step-dot"></div>
+                        <div class="step-title">Test the full auth flow</div>
+                    </div>
+                    <div class="step-why">Sign up with a display name → check <code>profiles</code> table in Supabase
+                        dashboard (should have the name) → land on tabs → force-close and reopen → still logged in (no
+                        login flash) → sign out → back at login → tap "Sign up" link → navigate to signup → sign in with
+                        existing account → land on tabs. Don't skip this — auth bugs caught now save hours later.</div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- M4 -->
+        <div class="milestone c4">
+            <div class="milestone-header" onclick="toggle(this)">
+                <div class="num">4</div>
+                <div class="m-title">Build the core screens</div>
+                <div class="m-tag">frontend</div>
+                <div class="chevron">▶</div>
+            </div>
+            <div class="steps">
+
+                <div class="step">
+                    <div class="step-header">
+                        <div class="step-dot"></div>
+                        <div class="step-title">Install required Expo packages <span class="new-pill">new</span></div>
+                    </div>
+                    <div class="step-why">Several screens depend on native device features that aren't included in a
+                        fresh Expo project. Install them all now so you're not interrupted mid-build:
+                        <code>expo-image-picker</code> (camera + photo library), <code>expo-location</code> (GPS
+                        coordinates), <code>react-native-maps</code> (map view), and
+                        <code>@react-native-async-storage/async-storage</code> (if not already installed for Supabase
+                        auth). Run <code>npx expo install</code> for each — this ensures you get versions compatible
+                        with your Expo SDK.
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-header">
+                        <div class="step-dot"></div>
+                        <div class="step-title">Build <code>components/Button.tsx</code> <span
+                                class="new-pill">new</span></div>
+                    </div>
+                    <div class="step-why">Create a reusable styled button before building any screens. Every screen in
+                        your app needs buttons — submit, cancel, sign out, pick photo, etc. Building one shared
+                        component now means they all look consistent and you change styling in one place. Accept props
+                        like <code>title</code>, <code>onPress</code>, <code>loading</code>, <code>disabled</code>, and
+                        <code>variant</code> (primary vs secondary). When <code>loading</code> is true, show a spinner
+                        inside the button and disable presses.
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-header">
+                        <div class="step-dot"></div>
+                        <div class="step-title">Set up the tab bar in <code>(tabs)/_layout.tsx</code></div>
+                    </div>
+                    <div class="step-why">Defines the bottom navigation bar. Expo Router reads this file and builds the
+                        native tab bar for both iOS and Android automatically. Each tab has a name, an icon, and points
+                        to a screen file inside <code>(tabs)/</code>.</div>
+                    <div class="substeps">
+                        <div class="sub">
+                            <div class="sub-dot"></div>
+                            <div>
+                                <div class="sub-title">Configure 4 tabs: Home, Report, Sightings, Map</div>
+                                <div class="sub-why">These are the four main sections of your app. Use icons from
+                                    <code>@expo/vector-icons</code> — they're included with Expo and work on both
+                                    platforms.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sub">
+                            <div class="sub-dot"></div>
+                            <div>
+                                <div class="sub-title">Add a 5th tab for Profile / Account <span
+                                        class="new-pill">new</span></div>
+                                <div class="sub-why">Users need somewhere to see their display name, sign out, and
+                                    eventually edit their profile. Without a profile tab, there's no sign-out button
+                                    anywhere in the app. Use a person icon.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-header">
+                        <div class="step-dot"></div>
+                        <div class="step-title">Create <code>lib/pets.ts</code></div>
+                    </div>
+                    <div class="step-why">Contains all Supabase queries for pet reports — <code>getAllReports()</code>,
+                        <code>getReportById()</code>, <code>createReport()</code>, <code>deleteReport()</code>. Import
+                        the <code>PetReport</code> type from <code>types.ts</code> so every function's input and output
+                        is typed. This is the same pattern as <code>auth.ts</code> — screens call these functions
+                        without knowing Supabase details.
+                    </div>
+                    <div class="substeps">
+                        <div class="sub">
+                            <div class="sub-dot"></div>
+                            <div>
+                                <div class="sub-title">Join profile data when fetching reports <span
+                                        class="new-pill">new</span></div>
+                                <div class="sub-why">When fetching reports for the feed, use
+                                    <code>.select('*, profiles(display_name)')</code> to include the submitter's name in
+                                    one query. Without this join, PetCards can't show who submitted the sighting — you'd
+                                    need a separate query per card, which is slow.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-header">
+                        <div class="step-dot"></div>
+                        <div class="step-title">Build <code>components/PetCard.tsx</code></div>
+                    </div>
+                    <div class="step-why">Reusable card showing photo, breed, description, location, and the submitter's
+                        display name. Both the home feed and sightings list use it. TypeScript props define exactly what
+                        data it requires — pass in a <code>PetReport</code> (with joined profile data) and it renders
+                        everything.</div>
+                    <div class="substeps">
+                        <div class="sub">
+                            <div class="sub-dot"></div>
+                            <div>
+                                <div class="sub-title">Show submitter name from joined profile data <span
+                                        class="new-pill">new</span></div>
+                                <div class="sub-why">Display the <code>display_name</code> from the joined
+                                    <code>profiles</code> table. If it's <code>null</code> (the user didn't set one),
+                                    fall back to "Anonymous" — never show a blank space.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sub">
+                            <div class="sub-dot"></div>
+                            <div>
+                                <div class="sub-title">Handle missing photos gracefully <span
+                                        class="new-pill">new</span></div>
+                                <div class="sub-why">If <code>photo_url</code> is null or the image fails to load, show
+                                    a placeholder image from your <code>assets/</code> folder (like
+                                    <code>placeholder-pet.png</code>) instead of a broken image icon.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-header">
+                        <div class="step-dot"></div>
+                        <div class="step-title">Build <code>(tabs)/index.tsx</code> — home feed</div>
+                    </div>
+                    <div class="step-why">Fetches all reports using <code>getAllReports()</code> and renders them as a
+                        scrollable <code>FlatList</code> of <code>PetCard</code>s. FlatList only renders cards currently
+                        on screen — stays fast even with hundreds of reports.</div>
+                    <div class="substeps">
+                        <div class="sub">
+                            <div class="sub-dot"></div>
+                            <div>
+                                <div class="sub-title">Add a loading skeleton state</div>
+                                <div class="sub-why">Show placeholder card shapes while data loads instead of a blank
+                                    screen. This gives the user immediate visual feedback that content is coming.</div>
+                            </div>
+                        </div>
+                        <div class="sub">
+                            <div class="sub-dot"></div>
+                            <div>
+                                <div class="sub-title">Add pull-to-refresh</div>
+                                <div class="sub-why">FlatList's built-in <code>onRefresh</code> prop re-fetches from
+                                    Supabase so new reports appear without restarting the app.</div>
+                            </div>
+                        </div>
+                        <div class="sub">
+                            <div class="sub-dot"></div>
+                            <div>
+                                <div class="sub-title">Add an empty state <span class="new-pill">new</span></div>
+                                <div class="sub-why">When there are zero reports, don't show a blank screen. Show a
+                                    friendly message like "No sightings yet — be the first to report one!" with a button
+                                    linking to the Report tab. Use FlatList's <code>ListEmptyComponent</code> prop.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-header">
+                        <div class="step-dot"></div>
+                        <div class="step-title">Build <code>(tabs)/sightings.tsx</code> — list view</div>
+                    </div>
+                    <div class="step-why">Similar to the home feed but focused on filtering and sorting. Start simple —
+                        a plain list of PetCards with the same loading, empty, and pull-to-refresh states. The breed
+                        filter dropdown gets added in Milestone 7 once the ML classifier is connected.</div>
+                </div>
+
+                <div class="step">
+                    <div class="step-header">
+                        <div class="step-dot"></div>
+                        <div class="step-title">Build <code>pet/[id].tsx</code> — detail page</div>
+                    </div>
+                    <div class="step-why">The <code>[id]</code> is Expo Router's dynamic route. Tapping a PetCard
+                        navigates to <code>/pet/abc123</code> and this screen calls <code>getReportById(id)</code> to
+                        fetch that specific report. Show the full-size photo, breed, description, location text, map
+                        snippet, submitter name, and timestamp.</div>
+                    <div class="substeps">
+                        <div class="sub">
+                            <div class="sub-dot"></div>
+                            <div>
+                                <div class="sub-title">Show a delete button only if the current user owns the report
+                                    <span class="new-pill">new</span>
+                                </div>
+                                <div class="sub-why">Compare <code>report.user_id</code> with the current user's ID from
+                                    AuthContext. If they match, show a delete button. If they don't, hide it. RLS will
+                                    block unauthorized deletions on the backend too, but hiding the button is better UX
+                                    than showing an error.</div>
+                            </div>
+                        </div>
+                        <div class="sub">
+                            <div class="sub-dot"></div>
+                            <div>
+                                <div class="sub-title">Add a confirmation dialog before deleting <span
+                                        class="new-pill">new</span></div>
+                                <div class="sub-why">Use React Native's built-in <code>Alert.alert()</code> to ask "Are
+                                    you sure?" before calling <code>deleteReport()</code>. Prevents accidental
+                                    deletions. Navigate back to the feed after successful deletion.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-header">
+                        <div class="step-dot"></div>
+                        <div class="step-title">Build <code>components/PhotoPicker.tsx</code></div>
+                    </div>
+                    <div class="step-why">Uses <code>expo-image-picker</code> to open the camera or photo library.
+                        Returns a local file URI that will be used to upload to Supabase Storage. The component handles
+                        requesting camera permissions from the user — on iOS and Android, the app must ask before
+                        accessing the camera or photo library.</div>
+                    <div class="substeps">
+                        <div class="sub">
+                            <div class="sub-dot"></div>
+                            <div>
+                                <div class="sub-title">Request permissions and handle denial <span
+                                        class="new-pill">new</span></div>
+                                <div class="sub-why">Call <code>requestCameraPermissionsAsync()</code> and
+                                    <code>requestMediaLibraryPermissionsAsync()</code>. If the user denies, show a
+                                    message explaining why the app needs access and link to device settings. Don't just
+                                    silently fail — that's confusing.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sub">
+                            <div class="sub-dot"></div>
+                            <div>
+                                <div class="sub-title">Offer both camera and photo library options <span
+                                        class="new-pill">new</span></div>
+                                <div class="sub-why">Show two buttons: "Take Photo" (opens camera) and "Choose from
+                                    Library" (opens gallery). Some users will snap a photo of a pet they just saw;
+                                    others will upload one they took earlier.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-header">
+                        <div class="step-dot"></div>
+                        <div class="step-title">Build <code>components/LocationPicker.tsx</code></div>
+                    </div>
+                    <div class="step-why">Uses <code>expo-location</code> to get GPS coordinates or let users pin a
+                        location on a map. Latitude and longitude get saved to <code>pet_reports</code> and power the
+                        map screen later.</div>
+                    <div class="substeps">
+                        <div class="sub">
+                            <div class="sub-dot"></div>
+                            <div>
+                                <div class="sub-title">Request location permissions and handle denial <span
+                                        class="new-pill">new</span></div>
+                                <div class="sub-why">Same pattern as camera permissions. Call
+                                    <code>requestForegroundPermissionsAsync()</code>. If denied, let users type a
+                                    location name manually into the <code>location_text</code> field as a fallback —
+                                    without lat/long the pin won't show on the map, but the report is still useful.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sub">
+                            <div class="sub-dot"></div>
+                            <div>
+                                <div class="sub-title">Auto-fill with current location, allow manual adjustment</div>
+                                <div class="sub-why">Default to the user's GPS location but show a small map where they
+                                    can drag the pin. The sighting might not be where the user currently is — they could
+                                    be reporting from home about a pet they saw at the park.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-header">
+                        <div class="step-dot"></div>
+                        <div class="step-title">Build <code>lib/storage.ts</code></div>
+                    </div>
+                    <div class="step-why">Handles photo upload logic — takes the local file URI from PhotoPicker, reads
+                        it as a blob, uploads to the <code>pet-photos</code> bucket under a path like
+                        <code>userId/timestamp.jpg</code>, and returns the public URL. The user-ID-based path is
+                        important because your Storage RLS policies check the path to enforce ownership for deletion.
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-header">
+                        <div class="step-dot"></div>
+                        <div class="step-title">Build <code>(tabs)/report.tsx</code> — submit a sighting</div>
+                    </div>
+                    <div class="step-why">Orchestrates PhotoPicker, LocationPicker, text inputs, and your reusable
+                        Button. Submit flow: upload photo via <code>storage.ts</code> → get back the public URL → save
+                        the full report row to <code>pet_reports</code> via <code>pets.ts</code>. The breed field is a
+                        manual text input for now — the CNN auto-fill comes in Milestone 7.</div>
+                    <div class="substeps">
+                        <div class="sub">
+                            <div class="sub-dot"></div>
+                            <div>
+                                <div class="sub-title">Show a preview of the selected photo</div>
+                                <div class="sub-why">The user should see what they're submitting before tapping submit.
+                                    Use a React Native <code>Image</code> component with the local URI from PhotoPicker.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sub">
+                            <div class="sub-dot"></div>
+                            <div>
+                                <div class="sub-title">Add description and breed text inputs</div>
+                                <div class="sub-why">Breed will be auto-filled by the CNN in Milestone 7 — for now make
+                                    it a manual text field. Description is freeform — "Small brown dog, limping, seen
+                                    near Oak Park."</div>
+                            </div>
+                        </div>
+                        <div class="sub">
+                            <div class="sub-dot"></div>
+                            <div>
+                                <div class="sub-title">Add a location text field <span class="new-pill">new</span></div>
+                                <div class="sub-why">Your table has both lat/long (for the map pin) and
+                                    <code>location_text</code> (human-readable like "Near Tustin Market Place"). Let
+                                    users type a description of where they saw the pet. This is separate from the GPS
+                                    coordinates — both get saved.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sub">
+                            <div class="sub-dot"></div>
+                            <div>
+                                <div class="sub-title">Disable submit until photo + location are both set</div>
+                                <div class="sub-why">A report without a photo or location isn't useful. Check that both
+                                    the photo URI and coordinates exist before enabling the submit button. TypeScript
+                                    form validation enforces this.</div>
+                            </div>
+                        </div>
+                        <div class="sub">
+                            <div class="sub-dot"></div>
+                            <div>
+                                <div class="sub-title">Show upload progress and handle failures <span
+                                        class="new-pill">new</span></div>
+                                <div class="sub-why">Photo upload can take several seconds on slow connections. Show a
+                                    progress indicator on the submit button. If the upload fails, show an error and let
+                                    the user retry — don't lose the form data they already entered.</div>
+                            </div>
+                        </div>
+                        <div class="sub">
+                            <div class="sub-dot"></div>
+                            <div>
+                                <div class="sub-title">Clear the form and navigate to the feed after success <span
+                                        class="new-pill">new</span></div>
+                                <div class="sub-why">After the report saves successfully, reset all form fields and
+                                    navigate to the home feed so the user sees their new report at the top. A "Report
+                                    submitted!" success message before navigating is a nice touch.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-header">
+                        <div class="step-dot"></div>
+                        <div class="step-title">Build <code>(tabs)/map.tsx</code> — map view</div>
+                    </div>
+                    <div class="step-why">Uses <code>react-native-maps</code> to show all reports as pins. Fetches
+                        reports from Supabase, reads the <code>latitude</code> and <code>longitude</code> columns, and
+                        places a <code>Marker</code> at each location. Tapping a pin navigates to that report's detail
+                        page.</div>
+                    <div class="substeps">
+                        <div class="sub">
+                            <div class="sub-dot"></div>
+                            <div>
+                                <div class="sub-title">Center the map on the user's current location <span
+                                        class="new-pill">new</span></div>
+                                <div class="sub-why">Use <code>expo-location</code> to get the user's coordinates and
+                                    set the map's initial region. If location permission is denied, default to a
+                                    reasonable fallback (like a city center). Users want to see sightings near them
+                                    first.</div>
+                            </div>
+                        </div>
+                        <div class="sub">
+                            <div class="sub-dot"></div>
+                            <div>
+                                <div class="sub-title">Show breed and photo in the pin callout <span
+                                        class="new-pill">new</span></div>
+                                <div class="sub-why">When a user taps a pin, show a small callout bubble with the pet's
+                                    photo thumbnail, breed, and a "View Details" link. This preview helps users decide
+                                    whether to tap through to the full detail page without leaving the map.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-header">
+                        <div class="step-dot"></div>
+                        <div class="step-title">Build <code>(tabs)/profile.tsx</code> — account screen <span
+                                class="new-pill">new</span></div>
+                    </div>
+                    <div class="step-why">Users need a place to see their account info and sign out. Read the current
+                        user's profile from AuthContext and display their display name, email, and account creation
+                        date. This is also where the sign-out button lives — without this screen, there is no way to log
+                        out of the app.</div>
+                    <div class="substeps">
+                        <div class="sub">
+                            <div class="sub-dot"></div>
+                            <div>
+                                <div class="sub-title">Show the user's submitted reports <span
+                                        class="new-pill">new</span></div>
+                                <div class="sub-why">Fetch reports where <code>user_id</code> matches the current user.
+                                    Display them as a list of PetCards. This lets users manage their own submissions —
+                                    they can tap through to the detail page and delete any of them.</div>
+                            </div>
+                        </div>
+                        <div class="sub">
+                            <div class="sub-dot"></div>
+                            <div>
+                                <div class="sub-title">Add a sign-out button</div>
+                                <div class="sub-why">Calls <code>signOut()</code> from <code>auth.ts</code>. AuthContext
+                                    detects the state change and the auth gate in <code>_layout.tsx</code> automatically
+                                    redirects to the login screen. Confirm before signing out with
+                                    <code>Alert.alert()</code>.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-header">
+                        <div class="step-dot"></div>
+                        <div class="step-title">End-to-end test of the core app</div>
+                    </div>
+                    <div class="step-why">Submit a report with photo + location + description → see it in the feed with
+                        your display name → tap for detail → see pin on map → tap pin callout → go to profile tab → see
+                        your report listed → delete it from the detail page → confirm it's gone from the feed. This is
+                        your working baseline before adding ML.</div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- M5 -->
+        <div class="milestone c5">
+            <div class="milestone-header" onclick="toggle(this)">
+                <div class="num">5</div>
+                <div class="m-title">Build and train the CNN model</div>
+                <div class="m-tag">Python + ML</div>
+                <div class="chevron">▶</div>
+            </div>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-header">
+                        <div class="step-dot"></div>
+                        <div class="step-title">Set up the <code>ml-service/</code> folder</div>
+                    </div>
+                    <div class="step-why">A completely separate Python project inside your monorepo. Its own
+                        dependencies, its own runtime, deployed to a different server than anything else. Create a
+                        Python virtual environment here (<code>python -m venv venv</code>) so your ML dependencies don't
+                        conflict with anything else on your system. Add <code>venv/</code> to <code>.gitignore</code>.
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-header">
+                        <div class="step-dot"></div>
+                        <div class="step-title">Get a dog breed dataset</div>
+                    </div>
+                    <div class="step-why">A CNN learns by seeing thousands of labeled examples. The Stanford Dogs
+                        Dataset has 20,580 images across 120 breeds and is free. Download into
+                        <code>training/dataset/</code> — add to <code>.gitignore</code> since it's several gigabytes.
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-header">
+                        <div class="step-dot"></div>
+                        <div class="step-title">Write <code>training/train.py</code> using transfer learning</div>
+                    </div>
+                    <div class="step-why">Transfer learning shortcuts training from scratch — you take MobileNetV2 or
+                        ResNet50 (already trained on 1.2 million images) and add your own classification layer on top
+                        for dog breeds. This means you need far fewer images and far less training time than building a
+                        CNN from zero.</div>
+                    <div class="substeps">
+                        <div class="sub">
+                            <div class="sub-dot"></div>
+                            <div>
+                                <div class="sub-title">Split the dataset into training, validation, and test sets <span
+                                        class="new-pill">new</span></div>
+                                <div class="sub-why">Use roughly 70% for training, 15% for validation (checked during
+                                    training to detect overfitting), and 15% for final testing (never seen during
+                                    training). If you only have training and test, you can't tell if the model is
+                                    memorizing instead of learning.</div>
+                            </div>
+                        </div>
+                        <div class="sub">
+                            <div class="sub-dot"></div>
+                            <div>
+                                <div class="sub-title">Add data augmentation <span class="new-pill">new</span></div>
+                                <div class="sub-why">Randomly flip, rotate, zoom, and adjust brightness of training
+                                    images. This artificially increases your dataset size and makes the model robust to
+                                    photos taken from different angles, lighting conditions, and distances — exactly
+                                    what real users will submit.</div>
+                            </div>
+                        </div>
+                        <div class="sub">
+                            <div class="sub-dot"></div>
+                            <div>
+                                <div class="sub-title">Load MobileNetV2 with <code>include_top=False</code></div>
+                                <div class="sub-why">Removes the final ImageNet classification layer so you can add your
+                                    own for 120 dog breeds. The rest of the network — all the layers that detect edges,
+                                    shapes, textures, and patterns — stays intact.</div>
+                            </div>
+                        </div>
+                        <div class="sub">
+                            <div class="sub-dot"></div>
+                            <div>
+                                <div class="sub-title">Freeze the base model layers</div>
+                                <div class="sub-why">Keeps pretrained knowledge intact. You only train your new
+                                    classification layer — much faster. Once that layer converges, you can optionally
+                                    unfreeze the last few base layers and fine-tune with a very low learning rate for a
+                                    small accuracy boost.</div>
+                            </div>
+                        </div>
+                        <div class="sub">
+                            <div class="sub-dot"></div>
+                            <div>
+                                <div class="sub-title">Add a Dense output layer with softmax activation</div>
+                                <div class="sub-why">One neuron per breed (120 total). Softmax converts outputs into
+                                    probabilities summing to 1 — e.g. "72% Labrador, 18% Golden Retriever, 10% other."
+                                    The highest probability is the prediction; the value itself is the confidence score
+                                    your app will display.</div>
+                            </div>
+                        </div>
+                        <div class="sub">
+                            <div class="sub-dot"></div>
+                            <div>
+                                <div class="sub-title">Train on Google Colab — free GPU</div>
+                                <div class="sub-why">Training on your laptop could take days. Colab gives you a free GPU
+                                    that reduces this to hours. Upload your dataset to Google Drive, mount it in Colab,
+                                    run training, and download the <code>.h5</code> model file when done.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-header">
+                        <div class="step-dot"></div>
+                        <div class="step-title">Write <code>training/evaluate.py</code></div>
+                    </div>
+                    <div class="step-why">Tests accuracy on the held-out test set — photos the model has never seen
+                        during training. A good transfer-learning model on dog breeds typically reaches 80–90% accuracy.
+                        If accuracy is much lower, common fixes are: more training epochs, unfreezing a few base layers,
+                        or more aggressive data augmentation.</div>
+                </div>
+                <div class="step">
+                    <div class="step-header">
+                        <div class="step-dot"></div>
+                        <div class="step-title">Save outputs to <code>model/</code></div>
+                    </div>
+                    <div class="step-why">Save the model as <code>breed_cnn.h5</code> and breed names as
+                        <code>classes.json</code>. The classes file maps numeric outputs (0, 1, 2…) back to breed names
+                        like "Labrador", "Poodle". Both files must travel together — if you retrain the model, you must
+                        regenerate classes.json to match. Add <code>breed_cnn.h5</code> to <code>.gitignore</code> (it's
+                        too large for Git) and note in the README where to download it.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- M6 -->
+        <div class="milestone c6">
+            <div class="milestone-header" onclick="toggle(this)">
+                <div class="num">6</div>
+                <div class="m-title">Build and deploy the ML API server</div>
+                <div class="m-tag">FastAPI + deployment</div>
+                <div class="chevron">▶</div>
+            </div>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-header">
+                        <div class="step-dot"></div>
+                        <div class="step-title">Write <code>preprocess.py</code></div>
+                    </div>
+                    <div class="step-why">Your CNN was trained on images resized to a specific size (224×224 for
+                        MobileNetV2) with pixel values normalized to a 0–1 range. Any image sent from the app must be
+                        transformed the exact same way — otherwise the model produces garbage output. This file contains
+                        one function that takes raw image bytes from the upload, resizes, normalizes, and returns a
+                        NumPy array ready for prediction.</div>
+                </div>
+                <div class="step">
+                    <div class="step-header">
+                        <div class="step-dot"></div>
+                        <div class="step-title">Write <code>model.py</code></div>
+                    </div>
+                    <div class="step-why">Loads <code>breed_cnn.h5</code> into memory once when the server starts — not
+                        on every request, which would add seconds of delay. Exposes a <code>predict(image_bytes)</code>
+                        function that runs preprocessing, calls <code>model.predict()</code>, finds the
+                        highest-probability class, and returns the breed name and confidence score using
+                        <code>classes.json</code>.
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-header">
+                        <div class="step-dot"></div>
+                        <div class="step-title">Write <code>main.py</code> — the FastAPI server</div>
+                    </div>
+                    <div class="step-why">FastAPI turns your Python functions into API endpoints that your Expo app can
+                        call over the internet. One main route — <code>POST /classify</code> — accepts an uploaded image
+                        file and returns the breed prediction as JSON like
+                        <code>{"breed": "Golden Retriever", "confidence": 0.91}</code>.
+                    </div>
+                    <div class="substeps">
+                        <div class="sub">
+                            <div class="sub-dot"></div>
+                            <div>
+                                <div class="sub-title">Add CORS headers</div>
+                                <div class="sub-why">Without CORS headers, requests from your app get blocked by
+                                    browser/platform security rules. FastAPI has a one-line middleware
+                                    (<code>CORSMiddleware</code>) to allow requests from any origin.</div>
+                            </div>
+                        </div>
+                        <div class="sub">
+                            <div class="sub-dot"></div>
+                            <div>
+                                <div class="sub-title">Add a <code>GET /health</code> route</div>
+                                <div class="sub-why">Returns <code>{"status": "ok"}</code>. Deployment platforms like
+                                    Render ping this endpoint to check if your server is alive. Your app can also call
+                                    it on startup to warn users if the ML service is down.</div>
+                            </div>
+                        </div>
+                        <div class="sub">
+                            <div class="sub-dot"></div>
+                            <div>
+                                <div class="sub-title">Validate the uploaded file <span class="new-pill">new</span>
+                                </div>
+                                <div class="sub-why">Check that the file is actually an image (JPEG, PNG) and within a
+                                    reasonable size limit (e.g. 10MB) before passing it to the model. Return a clear
+                                    error message if validation fails — this prevents crashes from corrupt uploads or
+                                    someone sending a non-image file.</div>
+                            </div>
+                        </div>
+                        <div class="sub">
+                            <div class="sub-dot"></div>
+                            <div>
+                                <div class="sub-title">Add basic logging <span class="new-pill">new</span></div>
+                                <div class="sub-why">Log each request with a timestamp, file size, predicted breed, and
+                                    confidence. When something goes wrong in production, logs are the only way to figure
+                                    out what happened. Python's built-in <code>logging</code> module is enough.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-header">
+                        <div class="step-dot"></div>
+                        <div class="step-title">Write <code>requirements.txt</code></div>
+                    </div>
+                    <div class="step-why">Python's equivalent of <code>package.json</code>. Lists every library your
+                        server needs so the deployment platform can install them: <code>fastapi</code>,
+                        <code>uvicorn</code>, <code>tensorflow</code>, <code>pillow</code>,
+                        <code>python-multipart</code>. Pin versions (e.g. <code>fastapi==0.104.1</code>) so your
+                        deployment doesn't break when a library updates.
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-header">
+                        <div class="step-dot"></div>
+                        <div class="step-title">Write the <code>Dockerfile</code></div>
+                    </div>
+                    <div class="step-why">Packages your Python server into a self-contained container that includes the
+                        OS, Python, all dependencies, the model file, and your code. The deployment platform reads this
+                        and knows exactly how to run your server — no manual setup needed. Use
+                        <code>python:3.11-slim</code> as the base image to keep the container small.
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-header">
+                        <div class="step-dot"></div>
+                        <div class="step-title">Test locally with Postman or curl</div>
+                    </div>
+                    <div class="step-why">Run <code>uvicorn main:app --reload</code> and send a test image to
+                        <code>http://localhost:8000/classify</code>. Try multiple breeds, a non-dog image (should still
+                        return something — check the confidence is low), an invalid file, and a very large image. Fix
+                        bugs here — much easier than debugging on a deployed server.
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-header">
+                        <div class="step-dot"></div>
+                        <div class="step-title">Deploy to Render or Railway</div>
+                    </div>
+                    <div class="step-why">Both read your Dockerfile and host your server in the cloud. Render has a free
+                        tier (the server sleeps after 15 minutes of inactivity and takes ~30 seconds to wake up — fine
+                        for a school project). Push code to GitHub, connect the repo to Render, and get back a public
+                        URL like <code>https://your-breed-api.onrender.com</code>.</div>
+                    <div class="substeps">
+                        <div class="sub">
+                            <div class="sub-dot"></div>
+                            <div>
+                                <div class="sub-title">Test the deployed endpoint <span class="new-pill">new</span>
+                                </div>
+                                <div class="sub-why">After deployment, hit <code>/health</code> to verify it's running,
+                                    then send a test image to <code>/classify</code> using the public URL. Response
+                                    times will be slower than local — especially on a free tier. Note the typical
+                                    response time so you know what to expect in the app.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- M7 -->
+        <div class="milestone c7">
+            <div class="milestone-header" onclick="toggle(this)">
+                <div class="num">7</div>
+                <div class="m-title">Connect ML to the app + polish</div>
+                <div class="m-tag">integration + final</div>
+                <div class="chevron">▶</div>
+            </div>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-header">
+                        <div class="step-dot"></div>
+                        <div class="step-title">Create <code>mobile/lib/breedClassifier.ts</code></div>
+                    </div>
+                    <div class="step-why">Bridge between the Expo app and your Python server. Takes a photo URI,
+                        converts it into a <code>multipart/form-data</code> POST request, sends it to your deployed API,
+                        and returns the breed and confidence. TypeScript return type:
+                        <code>Promise&lt;{ breed: string, confidence: number }&gt;</code>. This is an <code>async</code>
+                        function because it makes a network request to your ML server and has to wait for the response.
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-header">
+                        <div class="step-dot"></div>
+                        <div class="step-title">Add the ML URL to <code>mobile/.env</code></div>
+                    </div>
+                    <div class="step-why">Add <code>EXPO_PUBLIC_ML_API_URL=https://your-breed-api.onrender.com</code>.
+                        Storing the URL in <code>.env</code> means if you change hosting providers, you change one line
+                        in one file — no digging through code.</div>
+                </div>
+                <div class="step">
+                    <div class="step-header">
+                        <div class="step-dot"></div>
+                        <div class="step-title">Wire the classifier into <code>report.tsx</code></div>
+                    </div>
+                    <div class="step-why">After the user picks a photo, automatically call
+                        <code>classifyBreed(photoUri)</code> in the background. Pre-fill the breed text field with the
+                        result. The user can accept the prediction or override it by typing a different breed if the
+                        model is wrong.
+                    </div>
+                    <div class="substeps">
+                        <div class="sub">
+                            <div class="sub-dot"></div>
+                            <div>
+                                <div class="sub-title">Show a loading indicator on the breed field while classifying
+                                </div>
+                                <div class="sub-why">The API call takes 1–3 seconds (longer if the Render free tier is
+                                    waking up). Show a spinner on the breed field specifically — don't block the whole
+                                    form. The user can fill in the description and location while the classifier runs.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sub">
+                            <div class="sub-dot"></div>
+                            <div>
+                                <div class="sub-title">Build <code>components/BreedBadge.tsx</code></div>
+                                <div class="sub-why">Shows predicted breed and confidence as a styled badge, e.g.
+                                    "Golden Retriever · 91%". Use green for high confidence (>80%), yellow for medium
+                                    (50–80%), and gray for low (<50%). Helps the user decide whether to accept or
+                                        override the prediction.</div>
+                                </div>
+                            </div>
+                            <div class="sub">
+                                <div class="sub-dot"></div>
+                                <div>
+                                    <div class="sub-title">Handle classifier errors gracefully</div>
+                                    <div class="sub-why">If the ML server is down, the API times out, or the response is
+                                        malformed, the app should not crash. Wrap the classifier call in a
+                                        <code>try/catch</code>. On failure, show a small warning like "Auto-detect
+                                        unavailable" and let the user type the breed manually. The breed field should
+                                        already be editable — the classifier just pre-fills it.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="sub">
+                                <div class="sub-dot"></div>
+                                <div>
+                                    <div class="sub-title">Handle the Render cold start delay <span
+                                            class="new-pill">new</span></div>
+                                    <div class="sub-why">On the free tier, the ML server sleeps after 15 minutes and
+                                        takes ~30 seconds to wake up. If the first classify request times out, retry
+                                        once automatically. If it still fails, fall back to manual entry. Optionally
+                                        ping <code>/health</code> when the report screen opens to wake the server early.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-header">
+                            <div class="step-dot"></div>
+                            <div class="step-title">Add breed filtering to <code>sightings.tsx</code></div>
+                        </div>
+                        <div class="step-why">Now that reports have breed data, add a dropdown filter at the top of the
+                            sightings list. Fetch the distinct breeds from your reports with a Supabase query, display
+                            them as filter options, and when selected, filter with
+                            <code>.eq('breed', selectedBreed)</code>. Add an "All Breeds" option to clear the filter.
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-header">
+                            <div class="step-dot"></div>
+                            <div class="step-title">Add search to the sightings list <span class="new-pill">new</span>
+                            </div>
+                        </div>
+                        <div class="step-why">Add a text search bar above the breed filter. Let users search by
+                            description text using Supabase's <code>.ilike('description', '%search_term%')</code>.
+                            Someone looking for their lost dog might search "brown limping" to find matching sightings.
+                            Combine this with the breed filter so both can be active at once.</div>
+                    </div>
+                    <div class="step">
+                        <div class="step-header">
+                            <div class="step-dot"></div>
+                            <div class="step-title">Add error boundaries and loading states everywhere</div>
+                        </div>
+                        <div class="step-why">Go through every screen systematically and ask: what happens if the
+                            network is slow? If Supabase returns an error? If the photo upload fails halfway? If the ML
+                            server is unreachable? Each case needs a user-friendly message — never a blank screen, a
+                            crash, or a cryptic error. Add a <code>try/catch</code> around every <code>async</code> call
+                            and set an <code>error</code> state that renders a red message with a retry button.</div>
+                    </div>
+                    <div class="step">
+                        <div class="step-header">
+                            <div class="step-dot"></div>
+                            <div class="step-title">Final end-to-end test</div>
+                        </div>
+                        <div class="step-why">Full run-through: sign up with display name → take photo of a dog → breed
+                            auto-predicted with confidence badge → override if wrong → add location + description →
+                            submit → see report in feed with your name → tap for details → see pin on map with callout →
+                            go to sightings → filter by breed → search by description → go to profile → see your reports
+                            → delete one → sign out → sign back in → still see remaining reports. Test on both iOS and
+                            Android if possible.</div>
+                    </div>
+                    <div class="step">
+                        <div class="step-header">
+                            <div class="step-dot"></div>
+                            <div class="step-title">Build for distribution with EAS Build</div>
+                        </div>
+                        <div class="step-why">Expo's cloud build service compiles your app without needing a Mac for
+                            iOS. Run <code>eas build</code> and distribute via TestFlight (iOS) or direct APK (Android)
+                            without going through app stores. You'll need an Expo account and to configure
+                            <code>eas.json</code> in your project root — Expo's docs walk through this step by step.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <script>
+            function toggle(header) {
+                const steps = header.nextElementSibling;
+                const chevron = header.querySelector('.chevron');
+                const isOpen = steps.classList.contains('open');
+                document.querySelectorAll('.steps').forEach(s => s.classList.remove('open'));
+                document.querySelectorAll('.chevron').forEach(c => c.classList.remove('open'));
+                if (!isOpen) { steps.classList.add('open'); chevron.classList.add('open'); }
+            }
+        </script>
+</body>
+
+</html>
